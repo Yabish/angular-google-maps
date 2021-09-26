@@ -3,6 +3,24 @@
     <div class="col-md-12 my-3">
       <h1 class="text-center">{{ title }}</h1>
     </div>
+    <div class="col-md-8">
+      <agm-map
+        [latitude]="lat"
+        [longitude]="lng"
+        [zoom]="zoom"
+        [minZoom]="minZoom"
+        [maxZoom]="maxZoom"
+        [zoomControl]="zoomControl"
+        [streetViewControl]="streetViewControl"
+        [mapTypeControl]="mapTypeControl"
+      >
+        <agm-marker
+          [latitude]="lat"
+          [longitude]="lng"
+          (dragEnd)="draggingEnd()"
+        ></agm-marker>
+      </agm-map>
+    </div>
     <div class="col-md-4 mb-3">
       <div class="row">
         <div class="col-6">
@@ -26,7 +44,7 @@
           />
         </div>
 
-        <div class="col-12">
+        <div class="col-4">
           <label for="zoomLevel" class="form-label">Zoom Level</label>
           <input
             type="number"
@@ -38,8 +56,7 @@
             [(ngModel)]="zoom"
           />
         </div>
-
-        <div class="col-6">
+        <div class="col-4">
           <label for="minZoom" class="form-label">Min Zoom</label>
           <input
             type="number"
@@ -51,7 +68,7 @@
             [(ngModel)]="minZoom"
           />
         </div>
-        <div class="col-6">
+        <div class="col-4">
           <label for="maxZoom" class="form-label">Max Zoom</label>
           <input
             type="number"
@@ -64,18 +81,6 @@
           />
         </div>
       </div>
-    </div>
-    <div class="col-md-8">
-      <agm-map
-        [latitude]="lat"
-        [longitude]="lng"
-        [zoom]="zoom"
-        [minZoom]="minZoom"
-        [maxZoom]="maxZoom"
-        [draggable]="draggable"
-      >
-        <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
-      </agm-map>
     </div>
   </div>
 </div>

@@ -12,5 +12,9 @@ export class AppComponent {
   zoom = 10;
   minZoom = 5;
   maxZoom = 20;
-  draggable = true;
+  zoomControl = true;
+  streetViewControl = true;
+  mapTypeControl = true;
+
+  draggingEnd() {}
 }

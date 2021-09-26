@@ -1,5 +1,81 @@
-<h1>{{ title }}</h1>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12 my-3">
+      <h1 class="text-center">{{ title }}</h1>
+    </div>
+    <div class="col-md-4 mb-3">
+      <div class="row">
+        <div class="col-6">
+          <label for="lat" class="form-label">Latitude</label>
+          <input
+            type="number"
+            placeholder="Latitude"
+            id="lat"
+            class="form-control"
+            [(ngModel)]="lat"
+          />
+        </div>
+        <div class="col-6">
+          <label for="lng" class="form-label">Longitude</label>
+          <input
+            type="number"
+            placeholder="Longitude"
+            id="lng"
+            class="form-control"
+            [(ngModel)]="lng"
+          />
+        </div>
 
-<agm-map [latitude]="lat" [longitude]="lng">
-  <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
-</agm-map>
+        <div class="col-12">
+          <label for="zoomLevel" class="form-label">Zoom Level</label>
+          <input
+            type="number"
+            placeholder="zoom"
+            id="zoomLevel"
+            [min]="minZoom"
+            [max]="maxZoom"
+            class="form-control"
+            [(ngModel)]="zoom"
+          />
+        </div>
+
+        <div class="col-6">
+          <label for="minZoom" class="form-label">Min Zoom</label>
+          <input
+            type="number"
+            placeholder="Min Zoom"
+            id="minZoom"
+            min="1"
+            max="21"
+            class="form-control"
+            [(ngModel)]="minZoom"
+          />
+        </div>
+        <div class="col-6">
+          <label for="maxZoom" class="form-label">Max Zoom</label>
+          <input
+            type="number"
+            placeholder="Max Zoom"
+            id="maxZoom"
+            min="2"
+            max="22"
+            class="form-control"
+            [(ngModel)]="maxZoom"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <agm-map
+        [latitude]="lat"
+        [longitude]="lng"
+        [zoom]="zoom"
+        [minZoom]="minZoom"
+        [maxZoom]="maxZoom"
+        [draggable]="draggable"
+      >
+        <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+      </agm-map>
+    </div>
+  </div>
+</div>

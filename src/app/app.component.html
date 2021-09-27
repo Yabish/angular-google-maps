@@ -5,8 +5,8 @@
     </div>
     <div class="col-md-8">
       <agm-map
-        [latitude]="lat"
-        [longitude]="lng"
+        [latitude]="latitude"
+        [longitude]="longitude"
         [zoom]="zoom"
         [minZoom]="minZoom"
         [maxZoom]="maxZoom"
@@ -15,14 +15,29 @@
         [mapTypeControl]="mapTypeControl"
       >
         <agm-marker
-          [latitude]="lat"
-          [longitude]="lng"
-          (dragEnd)="draggingEnd()"
+          [latitude]="latitude"
+          [longitude]="longitude"
+          [draggable]="draggable"
+          [markerDraggable]="true"
+          (dragEnd)="markerDraggingEnd($event)"
         ></agm-marker>
       </agm-map>
     </div>
     <div class="col-md-4 mb-3">
       <div class="row">
+        <div class="col-12">
+          <input
+            type="text"
+            id="place"
+            class="form-control"
+            (keydown.enter)="$event.preventDefault()"
+            spellcheck="off"
+            type="text"
+            placeholder="Enter Place"
+            #search
+          />
+        </div>
+
         <div class="col-6">
           <label for="lat" class="form-label">Latitude</label>
           <input
@@ -30,7 +45,7 @@
             placeholder="Latitude"
             id="lat"
             class="form-control"
-            [(ngModel)]="lat"
+            [(ngModel)]="latitude"
           />
         </div>
         <div class="col-6">
@@ -40,7 +55,7 @@
             placeholder="Longitude"
             id="lng"
             class="form-control"
-            [(ngModel)]="lng"
+            [(ngModel)]="longitude"
           />
         </div>
 
